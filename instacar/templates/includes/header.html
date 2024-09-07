@@ -1,0 +1,38 @@
+{% load static %}
+<header>
+  <nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'car:index' %}">
+        <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+        InstaCar
+      </a>
+      {% with request.resolver_match.view_name as view_name %}
+        <ul class="nav nav-pills">
+          {% if user.is_authenticated %}
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-primary">
+                <a class="text-decoration-none text-reset" href="{% url 'car:car_create' %}">Написать пост</a>
+              </button>
+              <button type="button" class="btn btn-outline-primary">
+                <a class="text-decoration-none text-reset" href="{% url 'car:profile' user.username %}">{{ user.username }}</a>
+              </button>
+              <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-primary rounded-end">Выйти</button>
+              </form>
+            </div>
+          {% else %}
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-primary">
+                <a class="text-decoration-none text-reset" href="{% url 'login' %}">Войти</a>
+              </button>
+              <button type="button" class="btn btn-outline-primary">
+                <a class="text-decoration-none text-reset" href="{% url 'registration' %}">Регистрация</a>
+              </button>
+            </div>
+          {% endif %}
+        </ul>
+      {% endwith %}
+    </div>
+  </nav>
+</header>

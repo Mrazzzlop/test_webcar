@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+  Страница пользователя {{ profile }}
+{% endblock %}
+{% block content %}
+  <h1 class="mb-5 text-center ">Страница пользователя {{ profile.username }}</h1>
+  <small>
+    <ul class="list-group list-group-horizontal justify-content-center">
+      {% if user.is_authenticated and request.user == profile %}
+      <a class="btn btn-sm text-muted" href="{% url 'car:profile_edit' %}">Редактировать профиль</a>
+      <a class="btn btn-sm text-muted" href="{% url 'password_change' %}">Изменить пароль</a>
+      {% endif %}
+    </ul>
+  </small>
+  <br>
+  <h3 class="mb-5 text-center">Публикации пользователя</h3>
+  {% for car in page_obj %}
+    <article class="mb-5">
+      {% include "includes/post_card.html" %}
+    </article>
+  {% endfor %}
+  {% include "includes/paginator.html" %}
+{% endblock %}
