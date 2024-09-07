@@ -10,7 +10,8 @@
 
 ### Клонируйте репозиторий с проектом на свой компьютер. В терминале из рабочей директории выполните команду:
 ```bash
-git clone https://github.com/Mrazzzlop/foodgram-project-react.git
+git clone https://github.com/Mrazzzlop/test_webcar
+
 ```
 
 ### Установить и активировать виртуальное окружение
