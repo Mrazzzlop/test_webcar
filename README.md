@@ -73,25 +73,7 @@ python manage.py runserver
 }
 ```
 
-## 2. Авторизация пользователя (Auth Token and Basic Auth)
-(Auth Token)
-
-- **Метод** `POST`
-- **URL:** `http://127.0.0.1:8000/api/auth/token/login/`
-
-**Запрос:**
-```json
-{
-    "email": "newuser@example.com",
-    "password": "yourpassword"
-}
-```
-**Ответ:**
-```json
-{
-    "auth_token": "auth_token"
-}
-```
+## 2. Авторизация пользователя (Basic Auth)
 
 ## 3. Получить список всех машин
 
