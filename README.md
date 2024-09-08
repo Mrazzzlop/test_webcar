@@ -31,8 +31,8 @@ pip install -r requirements.txt
 ### Создать файл .env в папке проекта:
 ```.env
 SECRET_KEY=secret_key
-DEBUG=False
-ALLOWED_HOSTS=127.0.0.1,localhost,backend
+DEBUG=Fals
+ALLOWED_HOSTS=127.0.0.1,localhost
 ```
 
 ### Выполните миграции:
@@ -73,8 +73,8 @@ python manage.py runserver
 }
 ```
 
-## 2. Авторизация пользователя
-(JWT)
+## 2. Авторизация пользователя (Auth Token and Basic Auth)
+(Auth Token)
 
 - **Метод** `POST`
 - **URL:** `http://127.0.0.1:8000/api/auth/token/login/`
@@ -89,7 +89,7 @@ python manage.py runserver
 **Ответ:**
 ```json
 {
-    "token": "token"
+    "auth_token": "auth_token"
 }
 ```
 
