@@ -26,5 +26,4 @@ urlpatterns = [
     path('cars/<int:car_id>/comments/<int:pk>/',
          comments_detail, name='car-comment-detail'),
     path("auth/", include('djoser.urls')),
-    path("auth/", include('djoser.urls.authtoken')),
 ]

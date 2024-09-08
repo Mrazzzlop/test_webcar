@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'djoser',
     'rest_framework',
-    'rest_framework.authtoken',
     'api.apps.ApiConfig',
     'cars.apps.CarsConfig',
     'users.apps.UsersConfig'
@@ -113,7 +112,6 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
@@ -125,6 +123,4 @@ DJOSER = {
         "current_user": "api.v1.serializers.user_serializer.UserProfileSerializer",
     },
     "LOGIN_FIELD": "email",
-    'TOKEN_MODEL': 'rest_framework.authtoken.models.Token',
-    'TOKEN_CREATE_ON_LOGIN': True,
 }
