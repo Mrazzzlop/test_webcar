@@ -86,7 +86,7 @@ class ProfileListView(ListView):
     """Страница профиля пользователя"""
     model = Car
     template_name = 'blog/profile.html'
-    paginate_by = 10
+    paginate_by = 5
 
     def get_queryset(self):
         self.user_profile = get_object_or_404(
