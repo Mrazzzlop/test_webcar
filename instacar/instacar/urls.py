@@ -5,8 +5,8 @@ from django.views.generic.edit import CreateView
 from cars.forms import ProfileForm
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('cars.urls')),
+    path('admin/', admin.site.urls),
     path('auth/', include('django.contrib.auth.urls')),
     path(
         'auth/registration/',
