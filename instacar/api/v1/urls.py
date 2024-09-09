@@ -1,6 +1,6 @@
-# urls.py
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
 from api.v1.views.cars_views import CarViewSet
 from api.v1.views.cars_views import CommentViewSet
 from api.v1.views.users_views import UserViewSet
