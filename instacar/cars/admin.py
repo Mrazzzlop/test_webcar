@@ -5,7 +5,11 @@ from .models import Car, Comment
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('make', 'model', 'year', 'description', 'created_at', 'owner')
+    list_display = (
+        'make', 'model',
+        'year', 'description',
+        'created_at', 'owner'
+    )
     search_fields = ('make', 'model', 'year')
 
 

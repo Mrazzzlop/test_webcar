@@ -12,6 +12,7 @@ from instacar.constants import (
     COMMENT_SLICE_LENGTH,
 )
 
+
 class Car(models.Model):
     """Модель Машины"""
     make = models.CharField(

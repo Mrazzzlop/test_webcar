@@ -1,6 +1,5 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework.exceptions import PermissionDenied
 
 from cars.models import Car, Comment
 from api.v1.serializers.cars_serializers import (
@@ -51,5 +50,3 @@ class CommentViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         car_id = self.kwargs['car_id']
         serializer.save(author=self.request.user, car_id=car_id)
-
-
