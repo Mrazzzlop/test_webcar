@@ -1,20 +1,27 @@
 from django.db import models
 from django.utils import timezone
-
 from users.models import UserProfile
 from .validators import validate_year
-
+from instacar.constants import (
+    MAKE_MAX_LENGTH,
+    MODEL_MAX_LENGTH,
+    DESCRIPTION_MAX_LENGTH,
+    COMMENT_CONTENT_MAX_LENGTH,
+    MAKE_SLICE_LENGTH,
+    MODEL_SLICE_LENGTH,
+    COMMENT_SLICE_LENGTH,
+)
 
 class Car(models.Model):
     """Модель Машины"""
     make = models.CharField(
-        max_length=100,
+        max_length=MAKE_MAX_LENGTH,
         verbose_name='Марка',
         blank=False,
         null=False
     )
     model = models.CharField(
-        max_length=100,
+        max_length=MODEL_MAX_LENGTH,
         verbose_name='Модель',
         blank=False,
         null=False
@@ -24,7 +31,8 @@ class Car(models.Model):
         validators=[validate_year],
         blank=False, null=False
     )
-    description = models.TextField(
+    description = models.CharField(
+        max_length=DESCRIPTION_MAX_LENGTH,
         verbose_name='Описание',
         blank=True, null=True
     )
@@ -49,12 +57,13 @@ class Car(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self):
-        return f"{self.make} {self.model} ({self.year})"
+        return f"{self.make[:MAKE_SLICE_LENGTH]} {self.model[:MODEL_SLICE_LENGTH]} ({self.year})"
 
 
 class Comment(models.Model):
     """Модель Комментария"""
-    content = models.TextField(
+    content = models.CharField(
+        max_length=COMMENT_CONTENT_MAX_LENGTH,
         verbose_name='Содержание комментария',
         blank=False, null=False
     )
@@ -81,4 +90,4 @@ class Comment(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self):
-        return f"Комментарий от {self.author} к {self.car}"
+        return f"Комментарий от {self.author} к {self.car} ({self.content[:COMMENT_SLICE_LENGTH]})"

@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from instacar.constants import EMAIL_MAX_LENGHT
 
 class UserProfile(AbstractUser):
     """Модель Пользователя"""
-    email = models.EmailField(max_length=254, unique=True)
+    email = models.EmailField(max_length=EMAIL_MAX_LENGHT, unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = (
         'username',
